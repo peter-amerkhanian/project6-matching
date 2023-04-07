@@ -1,0 +1,6 @@
+"0","sim_results %>% filter(prop_balanced > 2/29) %>% nrow()
+"
+"1","[1]"
+"1"," 100"
+"1","
+"

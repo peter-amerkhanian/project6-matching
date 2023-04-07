@@ -1,0 +1,6 @@
+"0",""
+"0","# Save the proportions of each causal type"
+"0","p_1 <- df_freq$prop[1]"
+"0","p_2 <- df_freq$prop[2]"
+"0","p_3 <- df_freq$prop[3]"
+"0","p_4 <- df_freq$prop[4]"

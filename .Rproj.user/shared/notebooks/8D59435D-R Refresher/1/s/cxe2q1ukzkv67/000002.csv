@@ -1,0 +1,16 @@
+"0","```r
+library(readr)
+df <- read_csv(\"../../data/strength.csv\")
+
+```"
+"1","Parsed with column specification:
+cols(
+  id = col_double(),
+  tx = col_double(),
+  y = col_double(),
+  time = col_double()
+)
+"
+"0","```r
+head(df)
+```"

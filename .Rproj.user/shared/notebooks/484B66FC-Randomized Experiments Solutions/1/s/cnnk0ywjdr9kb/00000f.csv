@@ -1,0 +1,4 @@
+"0","df_freq_obs_type <- df %>%"
+"0","  count(A, Y_obs, type) %>%"
+"0","  group_by(type)"
+"0","df_freq_obs_type"

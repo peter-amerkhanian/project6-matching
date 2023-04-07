@@ -1,0 +1,4 @@
+"0","# Choose a baseline covariate (use dplyr for this)
+ypsps %>% select(student_Gen, Treatment)
+"
+"0",""

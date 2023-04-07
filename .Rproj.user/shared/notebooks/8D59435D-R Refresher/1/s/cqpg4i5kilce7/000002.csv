@@ -1,0 +1,25 @@
+"0","```r
+minus_one <- function(num) {
+  nums_minus_one <- num - 1
+  return(nums_minus_one)
+}
+
+minus_one_list <- list()
+system.time(for (num in numbers) {
+  minus_one_list[num] <- minus_one(num)
+})
+```"
+"1","   user  system elapsed 
+   6.26    0.22    8.56 
+"
+"0","```r
+system.time(apply_minus_one <- sapply(numbers, minus_one))
+```"
+"1","   user  system elapsed 
+   1.80    0.05    2.04 
+"
+"0","```r
+apply_minus_one[1]
+```"
+"1","[1] 0
+"

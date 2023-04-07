@@ -1,0 +1,2 @@
+"0","df <- df %>%"
+"0","  mutate(cluster = rep(1:100, each = n/100))"

@@ -1,0 +1,2 @@
+"0","df <- df %>%"
+"0","  mutate(Y_obs = as.numeric((A & Y_1) | (!A & Y_0)))"

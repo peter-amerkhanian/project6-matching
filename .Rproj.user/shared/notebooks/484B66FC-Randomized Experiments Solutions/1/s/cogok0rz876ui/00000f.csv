@@ -1,0 +1,3 @@
+"0","df %>%"
+"0","  count(A_bloc, Y_bloc) %>%"
+"0","  group_by(A_bloc)"

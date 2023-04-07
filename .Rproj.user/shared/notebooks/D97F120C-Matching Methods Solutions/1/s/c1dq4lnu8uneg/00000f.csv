@@ -1,0 +1,8 @@
+"0","set.seed(13)"
+"0","library(tidyverse)  #contains dplyr, ggplot2, and purr "
+"0","library(MatchIt)"
+"0",""
+"0","#install.packages(""optmatch"", repos = ""https://mran.microsoft.com/snapshot/2022-02-01"")"
+"0","library(optmatch)"
+"2","Error in library(optmatch) : there is no package called ‘optmatch’
+"

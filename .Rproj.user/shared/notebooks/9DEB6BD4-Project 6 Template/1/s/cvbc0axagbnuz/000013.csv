@@ -1,0 +1,144 @@
+"0","for (i in 1:100) {
+  # Randomly select features
+  colnames <- sample(names(ypsps_clean %>% select(-c(
+    student_ppnscal, college
+  ))),
+  sample(2:ncol(ypsps_clean), 1) - 1)
+  independent <- paste(colnames, collapse = "" + "")
+  ps_formula <- as.formula(paste(""college ~"", independent))
+  # Fit p-score models and save ATTs, proportion of balanced covariates, and mean percent balance improvement
+  model_ps <-
+    matchit(
+      replace = TRUE,
+      formula = ps_formula,
+      data = ypsps_clean,
+      method = ""quick"",
+      ratio = 1,
+      distance = ""glm"",
+      link = ""logit"",
+      estimand = ""ATT"",
+    )
+  lm_att <-
+    lm(
+      student_ppnscal ~ college + student_Gen + student_Race + student_GPA +
+        parent_HHInc + parent_EducW + parent_EducHH,
+      data = match.data(model_ps),
+      weights = weights
+    )
+  out <- bal.tab(model_ps, threshold = .1)
+  att_ps <- lm_att$coefficients['college']
+  atts[i] <- att_ps
+  prop_balanced[i] <- out$Balanced.mean.diffs['Balanced, <0.1', ] /
+    out$Balanced.mean.diffs %>% sum()
+  pre <- data.frame(summary(model_ps)$sum.all) %>%
+    pull(Std..Mean.Diff.) %>%
+    mean()
+  post <- data.frame(summary(model_ps)$sum.matched) %>%
+    pull(Std..Mean.Diff.) %>%
+    mean()
+  percent_imp[i] <- (post - pre) / pre
+}
+"
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: (from quickmatch) Most seeds are at zero distance to their neighbors in the clustering NNG. This typically happens with discrete low-dimensional covariates. Consider using exact matching with such data. Running with `secondary_unassigned_method == ""ignore""`.-2"
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: (from quickmatch) Most seeds are at zero distance to their neighbors in the clustering NNG. This typically happens with discrete low-dimensional covariates. Consider using exact matching with such data. Running with `secondary_unassigned_method == ""ignore""`.-2"
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: (from quickmatch) Most seeds are at zero distance to their neighbors in the clustering NNG. This typically happens with discrete low-dimensional covariates. Consider using exact matching with such data. Running with `secondary_unassigned_method == ""ignore""`.-2"
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."
+"2","Warning: The argument 'replace' is not used with `method = ""quick""` and will be ignored."

@@ -1,0 +1,35 @@
+"0","```r
+pets_vector <- c('dog', 'cat', 'parrot')
+
+pets_list <- list('dog', 'cat', 'parrot') 
+
+num_vector <- c(1, 2, 3)
+
+mixed_data <- c(1, 'dog', 2, 'cat')
+
+dog <- 'dog'
+
+class(pets_vector)
+```"
+"1","[1] \"character\"
+"
+"0","```r
+class(pets_list)
+```"
+"1","[1] \"list\"
+"
+"0","```r
+class(num_vector)
+```"
+"1","[1] \"numeric\"
+"
+"0","```r
+class(mixed_data)
+```"
+"1","[1] \"character\"
+"
+"0","```r
+class(dog)
+```"
+"1","[1] \"character\"
+"

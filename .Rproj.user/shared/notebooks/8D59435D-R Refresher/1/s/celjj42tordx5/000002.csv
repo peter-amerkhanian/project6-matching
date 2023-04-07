@@ -1,0 +1,10 @@
+"0","```r
+for (pet in pets_vector) {
+  print(pet)
+}
+
+```"
+"1","[1] \"dog\"
+[1] \"cat\"
+[1] \"parrot\"
+"

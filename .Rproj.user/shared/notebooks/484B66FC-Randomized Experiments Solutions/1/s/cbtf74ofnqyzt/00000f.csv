@@ -1,0 +1,3 @@
+"0","df <- df %>%"
+"0","  mutate(A_clus = rep(as.numeric(rbernoulli(100, p =0.5)), each = n/100),"
+"0","         Y_clus = as.numeric((A_clus & Y_1) | (!A_clus & Y_0)))"

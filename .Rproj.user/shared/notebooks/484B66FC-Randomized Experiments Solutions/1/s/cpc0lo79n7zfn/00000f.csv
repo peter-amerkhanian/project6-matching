@@ -1,0 +1,4 @@
+"0","df_group <- df %>% "
+"0","  group_by(W2) %>%"
+"0","  summarize(ATE = mean(ITE))"
+"0","df_group"

@@ -1,0 +1,16 @@
+"0","# Remove post-treatment covariates
+ypsps_clean <- ypsps %>%
+  select(-c(
+    matches(""_19\\d\\d""),
+    'interviewid',
+    'Treatment',
+    matches('\\wPlacebo')
+  ))
+"
+"1","[1m[33mError[39m in `select()`:[22m
+[33m![39m Can't subset columns that don't exist.
+[31m✖[39m Column `Treatment` doesn't exist.
+Backtrace:
+[90m 1. [39mypsps %>% ...
+[90m 3. [39m[1m[94mdplyr:::select.data.frame([39m[22m., -c(matches(""_19\\d\\d""), ""interviewid"", ""Treatment"", matches(""\\wPlacebo""))[1m[94m)[39m[22m
+"

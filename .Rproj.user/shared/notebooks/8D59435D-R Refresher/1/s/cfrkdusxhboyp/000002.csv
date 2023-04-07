@@ -1,0 +1,9 @@
+"0","```r
+print(system.time(for (number in numbers) {
+  numbers_for_loop[number] <- log(number)
+}))
+
+```"
+"1","   user  system elapsed 
+   3.43    0.08    4.81 
+"

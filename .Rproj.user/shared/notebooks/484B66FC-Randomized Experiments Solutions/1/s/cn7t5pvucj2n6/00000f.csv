@@ -1,0 +1,2 @@
+"0","df <- df %>%"
+"0","  mutate(block = rep(1:20, each = n/20))"

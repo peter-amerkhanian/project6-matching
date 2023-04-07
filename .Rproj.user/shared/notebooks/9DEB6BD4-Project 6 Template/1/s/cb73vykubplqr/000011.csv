@@ -1,0 +1,3 @@
+"0","bal.plot(model_ps, which = 'unadjusted')
+"
+"2","No `var.name` was provided. Displaying balance for distance."
